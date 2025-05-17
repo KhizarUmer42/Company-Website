@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import './CatchLine.css';
+import './Catchline.css';
 
 const CatchLine = () => {
   const ref = useRef(null);
