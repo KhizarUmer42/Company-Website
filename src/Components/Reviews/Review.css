@@ -1,0 +1,169 @@
+/* Parent Container */
+.Father {
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff; 
+    width: 100%;
+    align-items: center;
+    padding-bottom: 5vh; /* Responsive padding */
+    height: 80vh; /* Responsive height */
+}
+
+/* Title */
+#div1 {
+    font-family: 'Inter', sans-serif;
+    font-size: 3vw; /* Responsive font size */
+    color: rgb(0, 0, 0);
+    font-weight: bolder;
+    padding-top: 5vh; /* Responsive padding */
+    
+}
+
+/* Subtitle */
+#div2 {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.5vw; /* Responsive font size */
+    color: rgb(0, 0, 0);
+    padding-top: 2vh; /* Responsive padding */
+    
+}
+
+/* Container for div3 elements */
+.div3_parent {
+    padding-top: 2vh; /* Responsive padding */
+    position: relative;
+    height: 80%; /* Use relative height */
+    padding-bottom: 0;
+    display: flex;
+    flex-direction: row;
+    gap: 1%; /* Use percentage for spacing */
+    justify-content: center;
+    margin: 0 5%; /* Responsive margins */
+    max-height: 80%; /* Use relative max-height */
+    min-width: 40%; /* Use percentage or vw for responsiveness */
+    overflow: hidden;
+}
+
+/* Individual Box */
+#div3 {
+    margin-top: 2vh; /* Responsive margin */
+    padding: 2vh; /* Responsive padding */
+    position: relative;
+    width: 13%;
+    display: flex;
+    flex-direction: column;
+    background-color: #bbcffb;
+    justify-content: center; /* Change to flex-start */
+    align-items: center; /* Center items horizontally */
+    border: 1px solid rgb(15, 15, 248);
+    border-radius: 0.5rem; /* Use rem for responsive border radius */
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+    
+}
+
+/* Child Elements in div3 */
+#div3 > * {
+    padding-left: 5%; /* Use percentage for responsive padding */
+    padding-right: 5%; /* Use percentage for responsive padding */
+    margin: 0.5rem 0; /* Add vertical margin to create space between items */
+    font-family: 'Inter', sans-serif;
+    font-size: 18px; /* Responsive font size */
+    font-weight: 500;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    box-sizing: border-box;
+}
+
+/* Star Rating */
+.Star {
+    color: rgb(229, 229, 39);
+}
+
+
+
+@media (max-width: 1200px) {
+    .Father{
+        height: auto;
+    }
+    /* When screen width is 1024px or less */
+    .div3_parent {
+        flex-direction: row; /* Keep row direction */
+        flex-wrap: wrap; /* Allow wrapping */
+        justify-content: space-evenly; /* Space evenly */
+    }
+
+    #div3 {
+        width: 48%; /* Allow two divs per row with some spacing */
+        margin-bottom: 2vh; /* Add spacing between rows */
+        box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+
+    }
+
+    /* Adjust font sizes for smaller screens */
+    #div1 {
+        font-size: 4vw; /* Adjust font size for the title */
+        padding-top: 4vh; /* Adjust padding */
+        padding-left: 0;
+        text-align: center;
+    }
+
+    #div2 {
+        font-size: 2vw; /* Adjust font size for the subtitle */
+        padding-top: 1vh; /* Adjust padding */
+        padding-left: 5%;
+    }
+
+    /* Adjust font size in div3 */
+    #div3 > * {
+        
+        text-align: center;
+        font-size: 2.5vw; /* Adjust font size for the content in div3 */
+    }
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    /* Adjust font sizes for smaller screens */
+    .Father{
+        height: auto;
+    }
+    #div1 {
+        font-size: 7vw; /* Smaller font size */
+        padding-top: 4vh; /* Adjust padding */
+        
+    }
+    
+    #div2 {
+        box-sizing: border-box;
+        margin-left: 5%;
+        margin-right: 5%;
+        color: rgb(116, 114, 114);
+        font-size: 4vw; /* Smaller font size */
+        padding-top: 2vh; /* Adjust padding */
+        padding-left: 0;
+        text-align: center;
+        
+    }
+    
+    .div3_parent {
+        flex-direction: column; /* Change direction to column */
+        align-items: center; /* Center align items */
+        flex-wrap: wrap;
+        width: 100%;
+        margin: 0; /* Reset margin for better layout */
+        gap: 3vh; /* Adjust gap for spacing */
+    }
+
+    #div3 {
+        width: 80%; /* Adjust width for smaller screens */
+        
+    }
+
+    /* Adjust font size in div3 */
+    #div3 > * {
+        padding-top: 0%;
+        padding-bottom: 0%;
+        font-size: 4vw; /* Smaller font size */
+        text-align: center;
+    }
+}

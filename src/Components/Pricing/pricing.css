@@ -1,0 +1,305 @@
+/* pricing.css */
+
+.pricemain {
+    display: flex;
+    width: 100vw;
+    margin: 0;
+    height: auto; /* Allows the height to adjust based on content */
+    background: linear-gradient(to bottom, white 30%, #3868cf 100%);
+    padding: 20px 0; /* Add padding to top and bottom */
+    justify-content: center;
+    overflow: hidden;
+    
+}
+
+.flex {
+    display: flex;
+    flex-direction: row;
+    width: 70%;
+    padding: 4% 0;
+}
+
+.myh5 {
+    font-size: 2.5rem;
+    letter-spacing: -1px;    
+}
+
+.projects {
+    padding: 0 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap; /* Allow wrapping of project items */
+}
+
+.detail, .price {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 30px;
+    min-width: 300px; /* Ensure a minimum width for better responsiveness */
+}
+
+.price {
+    border-radius: 20px;
+    border: solid 1px rgb(215, 215, 215);
+    background-color: #fff;
+    overflow-wrap: break-word !important;
+    box-sizing: border-box;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+    
+}
+
+.Contactus {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* Allows elements to wrap when necessary */
+}
+
+.inner {
+    display: flex;
+    flex-direction: column;
+}
+
+.proj {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers content horizontally */
+    text-align: center;
+}
+
+.proj p {
+    color: #000;
+    margin: 0;
+}
+.inner-p{
+    color: #4f7bda;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.inner-h1{
+    margin: 0;
+    font-size: 40px;
+}
+
+.servicecontainer {
+    display: flex;
+    flex-direction: column;
+    padding: 5% 0;
+    justify-content: space-between;
+    border-top: solid 1px rgb(121, 135, 161);
+}
+
+.serv {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.image img {
+    height: 50px;
+}
+
+.contactbtn, .transparent-btn {
+    border-radius: 40px;
+    font-size: large;
+    cursor: pointer;
+    transition: background-color 0.5s ease;
+}
+
+.contactbtn {
+    padding: 0px 50px;
+    height: 70px;
+    background-color: #4f7bda;
+    color: white;
+    border: solid 1px #4f7bda;
+}
+
+.transparent-btn {
+    width: 40%;
+    padding: 20px;
+    background: transparent;
+    border: solid 1px #000;
+}
+
+.contactbtn:hover {
+    color: black;
+    background-color: white;
+}
+
+.transparent-btn:hover {
+    color: #fdfdff;
+    background-color: rgb(13, 1, 39);
+}
+
+/* Media Queries for responsiveness */
+
+/* Tablets (landscape mode) */
+@media (max-width: 1024px) {
+    .pricemain{
+        margin-top: 5%;
+    }
+    .flex {
+        flex-direction: column;
+        width: 90%;
+        padding: 2% 0;
+        overflow-wrap: break-word;
+        box-sizing: border-box;
+    }
+    .projects {
+        padding: 0;
+        margin-top: 10px;
+        justify-content: space-around;
+    }
+    .myh5{
+        font-size: 2rem;
+    }
+    .servicecontainer {
+        padding-top: 3%;
+        gap: 20px;
+    }
+}
+
+/* Mobile (portrait mode) */
+@media (max-width: 768px) {
+
+    .pricemain{
+        margin-top: 20vh;
+    }
+
+    .servicecontainer{
+        font-size: 2%;
+    }
+
+
+    .flex {
+        width: 80%;
+        margin-right: 0; /* Reset margin */
+        
+        min-width: 0;
+
+        
+    }
+
+    .myh5 {
+        color: rgb(0, 0, 0);
+        font-size: 1.4rem;
+        text-align: center;
+    }
+
+    .projects {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .proj h1 {
+        font-size: 1.8rem;
+    }
+
+    .detail {
+        padding: 0;
+        margin-bottom: 5%;
+    }
+
+    .price{
+        padding: 5%;
+    }
+
+    .price{
+        height: auto;
+    }
+
+    .contactbtn, .transparent-btn {
+        align-self: center;
+        padding: 15px;
+    }
+
+    .servicecontainer {
+        padding: 0;
+        gap: 15px;
+    }
+
+    .serv {
+        flex-direction: column;
+        align-items: center;
+        width: 100%; /* Ensures it takes full width */
+    }
+
+    .image img {
+        height: 40px;
+    }
+}
+
+@media (max-width: 600px) {
+    .myh5 {
+        color: rgb(0, 0, 0);
+        font-size: 1.2rem;
+        text-align: center;
+        
+    }
+    .price{
+        padding: 4%;
+    }
+    .contactbtn{
+        padding: 5%;
+        font-size: 1rem;
+    }
+    .inner-p{
+        font-size: 14px ;
+    }
+    .inner-h1{
+        font-size: 30px;
+    }
+    .pricemain{
+        margin-top: 10vh;
+    }
+
+    
+}
+
+
+@media (max-width: 400px) {
+    .price {
+        padding: 3%; /* Adjusts padding to fit smaller screens */
+    }
+    .contactbtn {
+        padding: 3%;
+        font-size: 0.9rem;
+    }
+    .inner-p {
+        font-size: 12px;
+    }
+    .inner-h1 {
+        font-size: 25px;
+    }
+    .Right-text {
+        font-size: 12px !important;
+    }
+}
+@media (max-width: 380px) {
+    .price {
+        padding: 5%; /* Adjusts padding to fit smaller screens */
+    }
+    .contactbtn {
+        padding: 3%;
+        font-size: 0.9rem;
+    }
+    .inner-p {
+        font-size: 12px;
+    }
+    .inner-h1 {
+        font-size: 25px;
+    }
+    .Right-text {
+        font-size: 12px !important;
+    }
+}
+

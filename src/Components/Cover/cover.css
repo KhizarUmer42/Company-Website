@@ -1,0 +1,174 @@
+/* Base styles */
+.Parent {
+    margin-top: 92px;
+    position: relative;
+    min-height: 40vh;
+    height: 50vh;
+    padding-top: 4%;
+    padding-bottom: 60px;
+    background-size: cover;
+    background-position: 50% 50%;
+    background-image: url('https://images.unsplash.com/photo-1448932223592-d1fc686e76ea?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fHBlb3BsZSUyMHdvcmtpbmclMjBvbiUyMGxhcHRvcHxlbnwwfHwwfHx8MA%3D%3D');
+}
+
+.gradient {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    background: linear-gradient(
+        rgba(156, 184, 246, 0.8),
+        rgba(255, 255, 255, 0.9)
+    );
+    justify-content: center;
+    align-items: center;
+    padding: 0 5%;
+    text-align: center;
+}
+
+.p1 {
+    color: black;
+    font-family: 'Inter', sans-serif;
+    font-size: 70px;
+    font-weight:500;
+    margin: 0;
+}
+#span2{
+    display: block;
+}
+
+.description, #p2 {
+    font-size: 22px;
+    color: rgb(83, 86, 110);
+    font-weight: 500;
+    
+}
+
+#span1 {
+    color: #2f63d3;
+    font-size: 80px;
+    text-transform: capitalize;
+    font-weight: bold;
+    font-style: italic;
+}
+
+.buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+    flex-wrap: wrap; /* Allows buttons to wrap on smaller screens */
+    justify-content: center;
+    width: 100%;
+}
+
+.Button1 {
+    font-family: "Inter", sans-serif;
+    font-weight: 500;
+    border: 2px solid black;
+    padding: 1.5% 2%; /* Use percentages for padding */
+    border-radius: 2.5rem; /* Use rem for a more scalable border-radius */
+    transition: background-color 0.3s ease, color 0.3s ease;
+    cursor: pointer;
+    max-width: 50%; /* Limit max width to 50% of the parent */
+    min-width: 120px; /* Ensure a minimum width */
+    text-align: center;
+    font-size: 18px; /* Responsive font size */
+}
+#b1 {
+    background-color: #4f7bda;
+    color: white;
+    border-color: white;
+}
+
+#b2 {
+    background-color: white;
+    border-color: gray;
+}
+
+#b1:hover {
+    background-color: #042638;
+    border-color: #4f7bda;
+}
+
+#b2:hover {
+    background-color: #042638;
+    border-color: #4f7bda;
+    color: white;
+}
+
+/* Responsive styles */
+@media (max-width: 1024px) {
+    .Parent{
+        margin-top: 8vh;
+    }
+
+    .p1 {
+        font-size: 2.5em;
+    }
+    
+    #span1{
+        font-size: 1em;
+
+
+    }
+    .description, #p2 {
+        font-size: 3vh;
+    }
+    
+    .Button1 {
+        font-size: 15px;
+        padding: 12px 15px;
+         /* Ensure buttons are full width on smaller screens */
+        max-width: 100%; /* Remove max width constraint */
+    }
+}
+
+@media (max-width: 768px) {
+    .Parent{
+        margin-top: 8vh;
+    }
+
+   
+    
+    .Button1 {
+        font-size: 2vw;
+        padding: 12px 15px;
+         /* Ensure buttons are full width on smaller screens */
+        max-width: 100%; /* Remove max width constraint */
+    }
+}
+
+@media (max-width: 480px) {
+    .Parent{
+        margin-top: 8vh;;
+    }
+    .p1 {
+        font-size: 25px;
+        font-weight: bolder;
+    }
+    #span2{
+        display: inline;
+    }
+    #span1{
+        font-size: 30px;
+
+
+    }
+    .description, #p2 {
+        color: #1e1f1f;
+        font-size: 15px;
+    }
+    
+    .Button1 {
+        border-width: 1px;
+        font-size: 14px;
+        padding: 10px 12px;
+         /* Full width for mobile */
+        max-width: 100%;
+        font-weight: 400;
+    }
+}

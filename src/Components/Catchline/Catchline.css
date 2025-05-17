@@ -1,0 +1,63 @@
+.CatchP {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    padding: 20px;
+    margin-bottom: 0;
+    text-align: center;
+}
+
+.CatchP > p {
+    font-family: 'Inter', sans-serif;
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin: 0;
+}
+
+.line {
+    z-index: 5;
+    position: relative;
+    bottom: 15%;
+    left: 20%;
+    filter: opacity(0.5) grayscale(100%) hue-rotate(130deg) sepia(100%) drop-shadow(0 0 0 blue);
+    width: 80%;
+    max-width: 400px;
+}
+
+/* Responsive adjustments */
+@media (max-width:1024){
+    .line{
+        width: 0%;
+    } 
+    .CatchP{
+        margin-bottom: 5%;
+    }
+}
+
+@media (max-width: 768px) {
+    .CatchP > p {
+        font-size: 2rem;
+        bottom: 15%;
+        left: 20%;
+    }
+    .line {
+        bottom: 40%;
+        left: 20%;
+        width: 70%;
+    }
+}
+
+@media (max-width: 480px) {
+    .CatchP{
+        margin-bottom: 0;
+    }
+    .CatchP > p {
+        font-size: 1.5rem;
+    }
+    .line {
+        width: 60%;
+        bottom: 10%;
+    }
+}

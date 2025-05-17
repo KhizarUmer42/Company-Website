@@ -1,0 +1,90 @@
+/* slider.css */
+.slider-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 70%; /* Occupies 80% of the parent width */
+    margin: 0 auto; /* Automatically centers the container */
+    padding: 0 20px; /* Adds horizontal padding inside the slider */
+    overflow: hidden; /* Ensures the slider doesn’t go out of bounds */
+
+}
+
+  
+  .slider-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 10vw; /* Adjust to control the space for each logo */
+    padding: 0 80px; /* Equal spacing between each item */
+  }
+  
+  .logo-image {
+    align-self: center;
+    max-width: 100%;
+    height: auto;
+    
+  }
+  
+/* Base Styles */
+.slider-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70%; /* Occupies 70% of the parent width */
+  margin: 0 auto; /* Centers the container */
+  padding: 0 10px; /* Adds horizontal padding */
+  overflow: hidden; /* Keeps logos within bounds */
+}
+
+.slider-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 12vw; /* Adjusts space for each logo */
+  padding: 0 20px; /* Adjusted spacing between items */
+}
+
+.logo-image {
+  align-self: center;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Medium screens (tablets) */
+@media (max-width: 1024px) {
+  .slider-container {
+      width: 90%; /* Occupies more width */
+  }
+
+  .slider-item {
+      width: 15vw; /* Wider items */
+      padding: 0 15px; /* Reduced padding */
+  }
+}
+
+/* Small screens (phones) */
+@media (max-width: 768px) {
+  .slider-container {
+      width: 90%;
+      padding: 0 5px; /* Minimal padding */
+  }
+
+  .slider-item {
+      width: 20vw; /* Larger width per logo */
+      padding: 0 10px; /* Further reduce padding */
+  }
+}
+
+/* Extra small screens */
+@media (max-width: 480px) {
+  .slider-container {
+      width: 90%;
+      padding: 0 2px; /* Minimum padding */
+  }
+
+  .slider-item {
+      width: 30vw; /* Each logo occupies more space */
+      padding: 0 5px; /* Minimal padding for smaller screens */
+  }
+}

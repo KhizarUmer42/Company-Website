@@ -1,0 +1,128 @@
+.Grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2%; /* Use percentage for gap */
+    margin-left: 15%; /* Reduced margin for responsiveness */
+    margin-right: 15%; /* Reduced margin for responsiveness */
+    margin-bottom: 5%;
+}
+
+.Grid :hover {
+    background-color: whitesmoke;
+}
+
+.Grid :hover #p1 {
+    color: #4f7bda; 
+}
+
+.Grid .flexy_Row:hover {
+    border-bottom: 0.2rem solid #4f7bda; /* Use rem for border size */
+}
+
+.flexy_Row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 2%; /* Use percentage for gap */
+    border-bottom: 0.1rem solid rgb(190, 188, 188); /* Use rem for border size */
+    transition: border 0.4s ease-in-out;
+    padding: 1%; /* Reduced padding for responsiveness */
+    
+    
+}
+
+.flexycolumn1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.flexycolumn2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.flexycolumn2 > #p1 {
+    font-family: 'Inter', sans-serif;
+    font-weight: bolder;
+    font-size: 2vw; /* Smaller initial font size */
+    transition: color 0.4s ease-in-out;
+}
+
+#p1:hover {
+    color: #4f7bda; 
+}
+
+.flexycolumn2 > #p2 {
+    margin-top: 0;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 1.3vw; /* Smaller initial font size */
+    color: rgb(143, 141, 141);
+}
+
+.globe {
+    height: 4vh; /* Adjusted height */
+    padding-left: 2%; /* Use percentage for padding */
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+    .Grid {
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+
+    .flexy_Row {
+        padding: 3%; /* Adjust padding for medium screens */
+    }
+
+    .flexycolumn2 > #p1 {
+        font-size: 2.8vw; /* Adjust font size for medium screens */
+    }
+
+    .flexycolumn2 > #p2 {
+        font-size: 2vw; /* Adjust font size for medium screens */
+    }
+}
+
+@media (max-width: 768px) {
+    .Grid {
+        grid-template-columns: 1fr; /* Stack items on small screens */
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+
+    .flexy_Row {
+        padding: 4%; /* Adjust padding for small screens */
+    }
+
+    .flexycolumn2 > #p1 {
+        font-size: 3vw; /* Adjust font size for small screens */
+    }
+
+    .flexycolumn2 > #p2 {
+        font-size: 2.5vw; /* Adjust font size for small screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .flexy_Row {
+        gap: 5%; /* Increase gap for extra small screens */
+    }
+
+    .flexycolumn2 > #p1 {
+        font-size: 4vw; /* Adjust font size for extra small screens */
+    }
+
+    .flexycolumn2 > #p2 {
+        font-size: 3vw; /* Adjust font size for extra small screens */
+    }
+
+    .globe {
+        height: 3vh; /* Adjust height for extra small screens */
+    }
+}

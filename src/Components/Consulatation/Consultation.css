@@ -1,0 +1,180 @@
+.Dad{
+    display: flex;
+    flex-direction: column;
+    height: 90vh;
+    background: radial-gradient(circle at center, #4f7bda 20%, #7ab8e1 50%, #005b99 70%, #002f4b 100%);
+    margin: 0;
+
+}
+
+.puss2{
+    display: block;
+    margin: 0;
+    padding: 0;
+    line-height: 0.8; 
+}
+.flexy1{
+    padding-top: 40px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    color: white;
+    font-family: 'Inter',sans-serif;
+    justify-content: center;
+    align-content: center;
+    gap: 10%;;
+    text-align: center;
+}
+.flexy1 p{
+    color: white;
+    margin: 0;
+    align-self: center;
+    font-size: 60px;
+    font-weight: bolder;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: '0.8';
+    padding-right: 10%;
+    padding-left: 10%;
+    
+}
+.flexy1 button{
+    margin-top: 30px;
+    width: 200px;
+    align-self: center;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    background-color: #0c52dd;
+    border-width: 2px;
+    border-color: white;
+    border-radius: 50px;
+    font-family: 'Inter',sans-serif;
+    font-weight: 500;
+    font-size: large;
+    color: white;
+    transition: background-color 0.3s ease-in-out;
+}
+
+button:hover{
+    background-color: white;
+    color: black;
+}
+.flexy1 #p1{
+    margin-top: 20px;
+    color: white;
+    align-self: center;
+    font-size: 20px;
+    font-weight: 500;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: '0.8';
+}
+.flexy2{
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    overflow: hidden;
+    
+}
+
+.flexy2 > .Myimg:nth-child(even) {
+    transform: rotate(6deg);            
+}
+.Myimg{
+    position: relative;
+    bottom: -10%;
+    height: 40vh;
+    width: 25vw;
+    border-radius: 25px;
+    transform: rotate(-6deg);
+    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 1024px) {
+    .flexy1 p {
+        font-size: 10vh; /* Adjust font size for tablet */
+    }
+    
+    .puss{
+        display: inline;        
+    }
+
+    .flexy1 button {
+        width: 30vw; /* Increase button size for tablet */
+        font-size: medium; /* Adjust font size for tablet */
+    }
+    .flexy2{
+        flex: 1;
+        height: 20vh;
+    }
+
+    .Myimg {
+        width: 50vw; /* Adjust image width for tablet */
+        /* Maintain aspect ratio */
+    }
+}
+
+@media (max-width: 850px){
+    .flexy1 p {
+        font-size: 8vh; /* Adjust font size for tablet */
+    }
+    .flexy1 #p1{
+        font-size: 3vh;
+    }
+
+
+}
+/* Mobile (portrait mode) */
+@media (max-width: 768px) {
+    .flexy1 p {
+        font-size: 30px; /* Smaller font size for mobile */
+    }
+
+    .flexy1 #p1{
+        font-size: 15px;
+    }
+
+    .puss{
+        display: inline;
+    }
+    
+    .flexy1 button {
+
+        width: 130px; /* Make buttons wider for mobile */
+        font-size: 15px; /* Adjust font size for mobile */
+    }
+
+    .Myimg {
+        width: 50vw; /* Adjust image width for mobile */
+        height: 40vh; /* Maintain aspect ratio */
+    }
+}
+
+/* Extra Small Mobile (smaller screens) */
+@media (max-width: 480px) {
+    .flexy1 p {
+        font-size: 4vh;
+        line-height: 1; /* Even smaller font size for very small screens */
+    }
+
+    #p1{
+        font-size: 2px;
+        color:black;
+    }
+    
+
+    .flexy1 button {
+        width: 40vw; /* Make buttons full width for very small screens */
+        font-size: 12px; /* Smaller font size for very small screens */
+    }
+
+    .Myimg {
+        width: 80vw; /* Adjust image width for very small screens */
+        height: 30vh; /* Maintain aspect ratio */
+        position: 0px;
+    }
+    
+}

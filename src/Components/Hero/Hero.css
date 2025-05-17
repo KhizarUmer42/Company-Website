@@ -1,0 +1,276 @@
+.Navi {
+    position: fixed;
+    top: 0;
+    z-index: 10;
+    background-color: white;
+    color: black;
+    display: flex;
+    width: 100%;
+    height: 92px;
+    justify-content: space-between;
+    border-bottom: 1px solid rgb(224, 227, 224);
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.Navlist {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transform: translateX(-15px);
+    font-size: large;
+    
+}
+
+.Navi.active{
+    border: 0;
+}
+.Navlist.active{
+    align-items: center;
+    
+}
+
+.Nav-child {
+    text-decoration: none;
+    color: black;
+    font-size:  20px;;
+    font-weight: 500;
+    transition: color 0.4s ease-in-out;
+}
+
+.Nav-child:hover {
+    color: #4f7bda;
+}
+
+#SCD {
+    position: relative;
+    background-color: #4f7bda;
+    width: 20%;
+    color: white;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    font-family: 'Inter', 'Sanserif';
+    font-weight: 500;
+    font-size: 18px;
+    text-align: center;
+    border-radius: 5px;
+}
+
+#SCD:hover {
+    background-color: rgba(5, 5, 23, 0.881);
+    cursor: pointer;
+}
+
+#logo {
+    height: 70px;
+    align-self: center;
+    padding: 30px;
+}
+
+.d1 {
+    display: none;
+}
+
+.arrow {
+    transform: rotate(45deg);
+    transition: transform 0.4s ease-in-out;
+}
+
+#SCD:hover .arrow {
+    transform: rotate(0deg);
+}
+
+#toggle-sidebar {
+    display: none; /* Initially hidden */
+}
+
+@media (max-width: 1024px) {
+    .d1 {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: fixed;
+        color: rgb(0, 0, 0);
+        z-index: 19;
+        top: 0;
+        width: 100%;
+        height: 10vh;
+        background-color: rgb(255, 255, 255);
+        box-sizing: border-box;
+        box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    #logo2 {
+        width: 80px;
+        align-self: center;
+    }
+
+    #toggle-sidebar {
+        background-color: #ffffff;
+        display: flex;
+        z-index: 20; /* Above sidebar */
+        background: #ffffff;
+        color: white;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+
+    .Navi {
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        flex-direction: column;
+        border-right: 1px solid rgb(224, 227, 224);
+        z-index: 10;
+        transition: transform 0.5s ease;
+    }
+
+    .Navi.active {
+        transform: translateX(100%);
+        height: 100vh;
+
+    }
+
+    .Navlist {
+        flex-direction: column;
+        align-items: center;
+        gap: 2vh;
+        width: 100%;
+        padding: 40px 0;
+    }
+
+    .Nav-child {
+        padding: 0px 20px;
+        font-size: 12px
+        ;
+        width: 100%;
+        text-align: left;
+    }
+
+    #SCD {
+        margin-left: 5vw;
+        width: 50%;
+        margin-bottom: 15vh;
+        align-self: center;
+    }
+
+    #logo2 {
+
+        width: 10vh;
+        align-self: center;
+        padding: 0;
+    }
+    .Icon{
+        color: #4f7bda !important;
+        font-size: 8vh !important;
+    }
+    .arrow {
+        margin-left: 10px;
+    }
+    #logo{
+        visibility: hidden;
+    }
+}
+
+@media (max-width: 768px) {
+    .d1 {
+        display: flex;
+        position: fixed;
+        color: rgb(0, 0, 0);
+        z-index: 19;
+        top: 0;
+        height: 8vh;
+        background-color: rgb(255, 255, 255);
+
+    }
+
+    #SCD {
+        width: 60%;
+        font-size: 16px;
+    }
+
+    #toggle-sidebar {
+        
+        margin-right: 2%;
+        padding: 0;
+        align-self: center;
+        background-color: white;
+        
+    }
+
+    .Nav-child {
+        font-size: large;
+    }
+
+    #logo2 {
+        width: 60px;
+        align-self: center;
+    }
+
+    .Icon{
+        color: #4f7bda !important;
+        font-size: 40px !important;
+    }
+
+    #logo{
+        visibility: hidden;
+    }
+    #logo2 {
+
+        width: 9vh;
+        align-self: center;
+    }
+    .Icon{
+        color: #4f7bda !important;
+        font-size: 7vh !important;
+    }
+
+  
+}
+
+@media (max-width: 468px) {
+    .d1 {
+        display: flex;
+        position: fixed;
+        color: rgb(0, 0, 0);
+        z-index: 19;
+        top: 0;
+        height: 8vh;
+        background-color: rgb(255, 255, 255);
+        align-items: center;
+    }
+
+    #SCD {
+        width: 80%;
+        font-size: 14px;
+    }
+
+    #toggle-sidebar {
+        margin-right: 2%;
+
+        background-color: white;
+        color: white;
+        
+        
+    }
+    .Nav-child {
+        font-size: large;
+        
+        padding: 0px 15px;
+    }
+
+    #logo2 {
+
+        width: 8vh;
+        align-self: center;
+        
+        
+    }
+    .Icon{
+        color: #4f7bda !important;
+        font-size: 5vh !important;
+    }
+}
