@@ -12,7 +12,6 @@ import Footer from './Components/Footer/Footer.jsx';
 const Home = () => {
   return (
     <div>
-      
       <Hero/>
       <Cover />
       <Slider />

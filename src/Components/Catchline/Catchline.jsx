@@ -3,27 +3,56 @@ import { motion, useInView } from "framer-motion";
 import './CatchLine.css';
 
 const CatchLine = () => {
-  const ref = useRef(null); // Reference to trigger in-view detection
-  const isInView = useInView(ref, { amount: 0.3 }); // Detects when 30% of the component is in view
+  const ref = useRef(null);
+  const isInView = useInView(ref, { amount: 0.3 });
+
+  const textVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: (i) => ({
+      opacity: 1,
+      y: 0,
+      transition: {
+        delay: i * 0.08,
+        duration: 0.6,
+        ease: [0.22, 1, 0.36, 1]
+      }
+    })
+  };
+
+  const words = "From Idea to Completion, we bring Full-Stack Expertise".split(" ");
 
   return (
-    <div className="CatchP" ref={ref}>
-      <motion.p
-        initial={{ opacity: 0, y: 50 }}
-        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }} // Animate back out when out of view
-        transition={{ duration: 0.8, ease: "easeOut" }}
-      >
-        From Idea to Completion, we bring Full-Stack Expertise
-      </motion.p>
-      <motion.img
-        className="line"
-        src="https://cdn.prod.website-files.com/65e9d802e7334ec910a26e59/65e9d803e7334ec910a26f85_Underline_.svg"
-        alt="underline"
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }} // Animate back out when out of view
-        transition={{ delay: 0.4, duration: 0.6, ease: "easeOut" }}
-      />
-    </div>
+    <motion.div 
+      className="catchline-container" 
+      ref={ref}
+      initial="hidden"
+      animate={isInView ? "visible" : "hidden"}
+    >
+      <div className="catchline-content">
+        <div className="catchline-text">
+          {words.map((word, i) => (
+            <motion.span
+              key={i}
+              custom={i}
+              variants={textVariants}
+              className="catchline-word"
+            >
+              {word}{" "}
+            </motion.span>
+          ))}
+        </div>
+        
+        <motion.div 
+          className="catchline-accent"
+          initial={{ scaleX: 0, opacity: 0 }}
+          animate={isInView ? { scaleX: 1, opacity: 1 } : { scaleX: 0, opacity: 0 }}
+          transition={{ delay: 0.6, duration: 0.4, ease: "easeOut" }}
+        >
+          <div className="accent-line"></div>
+          <div className="accent-dot"></div>
+        </motion.div>
+      </div>
+    </motion.div>
   );
 };
 

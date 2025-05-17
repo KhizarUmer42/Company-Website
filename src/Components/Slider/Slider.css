@@ -1,90 +1,168 @@
 /* slider.css */
-.slider-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 70%; /* Occupies 80% of the parent width */
-    margin: 0 auto; /* Automatically centers the container */
-    padding: 0 20px; /* Adds horizontal padding inside the slider */
-    overflow: hidden; /* Ensures the slider doesn’t go out of bounds */
-
+.slider-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 4rem 0;
+  position: relative;
+  overflow: hidden;
 }
 
-  
-  .slider-item {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 10vw; /* Adjust to control the space for each logo */
-    padding: 0 80px; /* Equal spacing between each item */
-  }
-  
-  .logo-image {
-    align-self: center;
-    max-width: 100%;
-    height: auto;
-    
-  }
-  
-/* Base Styles */
+.trusted-by {
+  text-align: center;
+  margin-bottom: 2rem;
+  position: relative;
+  z-index: 2;
+}
+
+.trusted-by h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 0.5rem;
+}
+
+.trusted-by p {
+  font-size: 1.1rem;
+  color: #666;
+  opacity: 0.9;
+}
+
+/* Dark mode heading styles */
+:global(.dark-mode) .trusted-by h2 {
+  color: #ffffff;
+}
+
+:global(.dark-mode) .trusted-by p {
+  color: #a0a0a0;
+}
+
 .slider-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 70%; /* Occupies 70% of the parent width */
-  margin: 0 auto; /* Centers the container */
-  padding: 0 10px; /* Adds horizontal padding */
-  overflow: hidden; /* Keeps logos within bounds */
+  width: 100%;
+  padding: 2rem 0;
+  position: relative;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.1),
+    inset 0 0 32px rgba(255, 255, 255, 0.1);
+}
+
+/* Glass effect background */
+.slider-container::before {
+  content: '';
+  position: absolute;
+  top: -100%;
+  left: -100%;
+  right: -100%;
+  bottom: -100%;
+  background: radial-gradient(
+    circle at center,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.05) 50%,
+    transparent 100%
+  );
+  animation: shine 15s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes shine {
+  0% {
+    transform: translateY(100%) translateX(100%);
+  }
+  100% {
+    transform: translateY(-100%) translateX(-100%);
+  }
 }
 
 .slider-item {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 12vw; /* Adjusts space for each logo */
-  padding: 0 20px; /* Adjusted spacing between items */
+  width: 15vw;
+  padding: 0 40px;
+  transition: transform 0.3s ease;
 }
 
 .logo-image {
   align-self: center;
   max-width: 100%;
   height: auto;
+  transition: all 0.3s ease;
+  filter: none;
+  opacity: 1;
+}
+
+.logo-image:hover {
+  transform: scale(1.05);
+}
+
+/* Dark mode container */
+:global(.dark-mode) .slider-container {
+  background: rgba(17, 25, 40, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.2),
+    inset 0 0 32px rgba(255, 255, 255, 0.05);
 }
 
 /* Medium screens (tablets) */
 @media (max-width: 1024px) {
-  .slider-container {
-      width: 90%; /* Occupies more width */
+  .slider-section {
+    padding: 3rem 0;
+  }
+
+  .trusted-by h2 {
+    font-size: 1.75rem;
+  }
+
+  .trusted-by p {
+    font-size: 1rem;
   }
 
   .slider-item {
-      width: 15vw; /* Wider items */
-      padding: 0 15px; /* Reduced padding */
+    width: 20vw;
+    padding: 0 30px;
   }
 }
 
 /* Small screens (phones) */
 @media (max-width: 768px) {
-  .slider-container {
-      width: 90%;
-      padding: 0 5px; /* Minimal padding */
+  .slider-section {
+    padding: 2rem 0;
+  }
+
+  .trusted-by h2 {
+    font-size: 1.5rem;
   }
 
   .slider-item {
-      width: 20vw; /* Larger width per logo */
-      padding: 0 10px; /* Further reduce padding */
+    width: 25vw;
+    padding: 0 20px;
   }
 }
 
 /* Extra small screens */
 @media (max-width: 480px) {
-  .slider-container {
-      width: 90%;
-      padding: 0 2px; /* Minimum padding */
+  .slider-section {
+    padding: 1.5rem 0;
+  }
+
+  .trusted-by h2 {
+    font-size: 1.25rem;
+  }
+
+  .trusted-by p {
+    font-size: 0.9rem;
   }
 
   .slider-item {
-      width: 30vw; /* Each logo occupies more space */
-      padding: 0 5px; /* Minimal padding for smaller screens */
+    width: 35vw;
+    padding: 0 15px;
   }
 }

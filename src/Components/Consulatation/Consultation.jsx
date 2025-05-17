@@ -4,71 +4,123 @@ import p1 from './j1.webp';
 import p2 from './j2.webp';
 import p3 from './j3.webp';
 import p4 from './j4.webp';
-import { motion } from 'framer-motion'; // Import motion from framer-motion
+import { motion, useScroll, useTransform } from 'framer-motion'; // Import additional hooks
 
-const images = [p1, p2, p3, p4]; // Array of images
+const images = [p1, p2, p3, p4];
 
-const Consultation = (props) => {
-  const [isVisible, setIsVisible] = useState(false); // State to track visibility
-  const ref = useRef(null); // Ref to the component element
+const Consultation = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  const containerRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"]
+  });
 
-  // Effect to observe the component's visibility
+  // Parallax effect for images
+  const y = useTransform(scrollYProgress, [0, 1], [100, -100]);
+
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        setIsVisible(entry.isIntersecting); // Set visibility based on intersection
+        setIsVisible(entry.isIntersecting);
       },
-      { threshold: 0.1 } // Trigger when 10% of the component is in view
+      { threshold: 0.1 }
     );
 
-    if (ref.current) {
-      observer.observe(ref.current); // Observe the component element
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
     }
 
     return () => {
-      if (ref.current) {
-        observer.unobserve(ref.current); // Cleanup the observer
+      if (containerRef.current) {
+        observer.unobserve(containerRef.current);
       }
     };
   }, []);
 
+  const contentVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.8,
+        ease: [0.4, 0, 0.2, 1]
+      }
+    }
+  };
+
+  const buttonVariants = {
+    initial: { scale: 1 },
+    hover: { 
+      scale: 1.02,
+      transition: {
+        duration: 0.3,
+        ease: [0.4, 0, 0.2, 1]
+      }
+    },
+    tap: { scale: 0.98 }
+  };
+
   return (
-    <div className="Dad" ref={ref}>
-      <div className="flexy1">
-        <motion.p
-          initial={{ y: 20, opacity: 0 }} // Start with slide down and invisible
-          animate={isVisible ? { y: 0, opacity: 1, transition: { duration: 0.5 } } : { y: 20, opacity: 0 }} // Slide up on visibility
+    <div className="consultation-container" ref={containerRef}>
+      <div className="consultation-content">
+        <motion.div
+          initial="hidden"
+          animate={isVisible ? "visible" : "hidden"}
+          variants={contentVariants}
         >
-          Schedule a free consultation <span style={{ display: 'block', margin: '0', padding: '0', lineHeight: '1' }}>with one of our experts.</span>
-        </motion.p>
-        <motion.p
-          id="p1"
-          initial={{ y: 20, opacity: 0 }} // Start with slide down and invisible
-          animate={isVisible ? { y: 0, opacity: 1, transition: { duration: 0.5, delay: 0.2 } } : { y: 20, opacity: 0 }} // Slide up on visibility
-        >
-          Take the first step towards a brighter future and supercharge your business with cutting-edge technologies, expert guidance, and unparalleled support.
-        </motion.p>
-        <motion.button
-          initial={{ scale: 0 }} // Start off scaled down
-          animate={isVisible ? { scale: 1, transition: { duration: 0.3 } } : { scale: 0 }} // Scale up on visibility
-          exit={{ scale: 0 }} // Scale down when not visible
-        >
-          Schedule Now
-        </motion.button>
+          <h1 className="consultation-title">
+            Transform Your Vision
+            <span>Schedule a free consultation today</span>
+          </h1>
+          
+          <p className="consultation-description">
+            Join industry leaders who have already revolutionized their businesses 
+            with our cutting-edge solutions and expert guidance. Let's build your 
+            future together.
+          </p>
+
+          <motion.button
+            className="consultation-button"
+            variants={buttonVariants}
+            initial="initial"
+            whileHover="hover"
+            whileTap="tap"
+          >
+            Get Started
+          </motion.button>
+        </motion.div>
       </div>
-      <div className="flexy2">
+
+      <motion.div 
+        className="consultation-images"
+        style={{ y }}
+      >
         {images.map((image, index) => (
-          <motion.img
+          <motion.div
             key={index}
-            className='Myimg'
-            src={image}
-            alt={`Consultation ${index + 1}`} // Alt text for accessibility
-            initial={{ x: -50, opacity: 0, rotate: index % 2 === 0 ? -20 : 20 }} // Start with rotation and off-screen
-            animate={isVisible ? { x: 0, opacity: 1, rotate: 0, transition: { duration: 0.5, delay: index * 0.1 } } : { x: -50, opacity: 0 }} // Slide in on visibility
-            exit={{ x: -50, opacity: 0 }} // Slide back out when not visible
-          />
+            className="image-container"
+            initial={{ opacity: 0, y: 50 }}
+            animate={isVisible ? { 
+              opacity: 1, 
+              y: 0,
+              transition: {
+                duration: 0.8,
+                delay: index * 0.2,
+                ease: [0.4, 0, 0.2, 1]
+              }
+            } : {}}
+          >
+            <img
+              className="consultation-image"
+              src={image}
+              alt={`Success story ${index + 1}`}
+              loading="lazy"
+            />
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
     </div>
   );
 };

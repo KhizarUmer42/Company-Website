@@ -1,169 +1,309 @@
-/* Parent Container */
-.Father {
+/* Review.css */
+:root {
+    --review-primary-color: #007AFF; /* Apple's blue */
+    --review-gradient-start: #F2F2F7; /* Light grey for background */
+    --review-gradient-end: #FFFFFF;
+    --review-text-primary: #1D1D1F; /* Apple's primary text color */
+    --review-text-secondary: #6E6E73; /* Apple's secondary text color */
+    --review-background-main: #F9F9FB; /* Off-white background */
+    --review-background-card: #FFFFFF;
+    --review-border-color: rgba(0, 0, 0, 0.08); /* Softer border */
+    --review-accent-light: rgba(0, 122, 255, 0.1);
+    --review-font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.reviews-section {
+    font-family: var(--review-font-sans);
+    background: linear-gradient(135deg, #0a1128 0%, #1a365d 100%);
+    padding: 6rem 2rem;
     display: flex;
     flex-direction: column;
-    background-color: #ffffff; 
-    width: 100%;
     align-items: center;
-    padding-bottom: 5vh; /* Responsive padding */
-    height: 80vh; /* Responsive height */
-}
-
-/* Title */
-#div1 {
-    font-family: 'Inter', sans-serif;
-    font-size: 3vw; /* Responsive font size */
-    color: rgb(0, 0, 0);
-    font-weight: bolder;
-    padding-top: 5vh; /* Responsive padding */
-    
-}
-
-/* Subtitle */
-#div2 {
-    font-family: 'Inter', sans-serif;
-    font-size: 1.5vw; /* Responsive font size */
-    color: rgb(0, 0, 0);
-    padding-top: 2vh; /* Responsive padding */
-    
-}
-
-/* Container for div3 elements */
-.div3_parent {
-    padding-top: 2vh; /* Responsive padding */
     position: relative;
-    height: 80%; /* Use relative height */
-    padding-bottom: 0;
-    display: flex;
-    flex-direction: row;
-    gap: 1%; /* Use percentage for spacing */
-    justify-content: center;
-    margin: 0 5%; /* Responsive margins */
-    max-height: 80%; /* Use relative max-height */
-    min-width: 40%; /* Use percentage or vw for responsiveness */
+    overflow: hidden;
+    color: white;
+}
+
+.reviews-section::before,
+.reviews-section::after {
+    content: '';
+    position: absolute;
+    width: 150vmax;
+    height: 150vmax;
+    top: -50vmax;
+    left: -50vmax;
+    z-index: 0;
+    opacity: 0.5;
+    animation: rotate 25s linear infinite;
+}
+
+.reviews-section::before {
+    background: radial-gradient(circle, rgba(0, 122, 255, 0.3) 0%, transparent 60%),
+                radial-gradient(circle at 60% 40%, rgba(64, 156, 255, 0.3) 0%, transparent 50%);
+    animation-duration: 30s;
+}
+
+.reviews-section::after {
+    background: radial-gradient(circle at 40% 60%, rgba(100, 181, 255, 0.2) 0%, transparent 50%),
+                radial-gradient(circle at 70% 30%, rgba(0, 89, 255, 0.2) 0%, transparent 40%);
+    animation-duration: 20s;
+    animation-direction: reverse;
+}
+
+@keyframes rotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.reviews-header {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 4rem;
+    position: relative;
+    z-index: 1;
+}
+
+.reviews-section-title {
+    font-family: var(--review-font-sans);
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--review-primary-color);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 1.5rem;
+    position: relative;
+    display: inline-block;
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.reviews-section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -0.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    border-radius: 2px;
+}
+
+.reviews-main-title {
+    font-size: 3rem;
+    font-weight: 700;
+    color: white;
+    text-align: center;
+    margin: 0 0 1rem;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+}
+
+.reviews-subtitle {
+    font-size: 1.125rem;
+    color: rgba(255, 255, 255, 0.8);
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+    font-weight: 400;
+}
+
+.testimonial-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2.5rem;
+    width: 100%;
+    max-width: 1200px;
+    padding: 0;
+    position: relative;
+    z-index: 1;
+}
+
+.testimonial-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 2.5rem;
+    position: relative;
+    transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     overflow: hidden;
 }
 
-/* Individual Box */
-#div3 {
-    margin-top: 2vh; /* Responsive margin */
-    padding: 2vh; /* Responsive padding */
-    position: relative;
-    width: 13%;
+.testimonial-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.testimonial-card .card-quote-icon {
+    font-size: 2.5rem;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 1.5rem;
+    opacity: 0.8;
+}
+
+.testimonial-card .card-summary {
+    font-size: 1.25rem;
+    line-height: 1.5;
+    color: white;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.testimonial-card .card-statement {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 2rem;
+}
+
+.testimonial-card .card-user-info {
+    margin-top: auto;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
     display: flex;
-    flex-direction: column;
-    background-color: #bbcffb;
-    justify-content: center; /* Change to flex-start */
-    align-items: center; /* Center items horizontally */
-    border: 1px solid rgb(15, 15, 248);
-    border-radius: 0.5rem; /* Use rem for responsive border radius */
-    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+    align-items: center;
+    gap: 1rem;
+}
+
+.testimonial-card .card-user-avatar {
+    width: 48px; /* Slightly smaller */
+    height: 48px;
+    border-radius: 50%;
+    background: var(--review-accent-light); /* Use accent for avatar background */
+    padding: 0; /* No padding needed if image fits */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.testimonial-card .card-user-avatar img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    /* border: 2px solid white; Removed border, background handles separation */
+}
+
+.testimonial-card .card-user-name {
+    font-weight: 600;
+    color: white;
+    font-size: 1rem;
+    letter-spacing: 0;
+    margin-bottom: 0.125rem;
+}
+
+.testimonial-card .card-user-statement { /* This was user company/title */
+    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.4;
+}
+
+.testimonial-card .Star {
+    color: #FFCC00; /* Standard gold star color */
+    font-size: 1rem; /* Adjusted size */
+    margin-bottom: 1rem; /* Adjusted margin */
+    display: flex;
+    gap: 0.25rem; /* Tighter gap */
+}
+
+@media (max-width: 1024px) {
+    .testimonial-grid {
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* Responsive adjustment */
+        gap: 2rem;
+    }
     
-}
-
-/* Child Elements in div3 */
-#div3 > * {
-    padding-left: 5%; /* Use percentage for responsive padding */
-    padding-right: 5%; /* Use percentage for responsive padding */
-    margin: 0.5rem 0; /* Add vertical margin to create space between items */
-    font-family: 'Inter', sans-serif;
-    font-size: 18px; /* Responsive font size */
-    font-weight: 500;
-    color: rgb(0, 0, 0);
-    text-align: center;
-    box-sizing: border-box;
-}
-
-/* Star Rating */
-.Star {
-    color: rgb(229, 229, 39);
-}
-
-
-
-@media (max-width: 1200px) {
-    .Father{
-        height: auto;
+    .reviews-main-title {
+        font-size: 2.5rem;
     }
-    /* When screen width is 1024px or less */
-    .div3_parent {
-        flex-direction: row; /* Keep row direction */
-        flex-wrap: wrap; /* Allow wrapping */
-        justify-content: space-evenly; /* Space evenly */
-    }
-
-    #div3 {
-        width: 48%; /* Allow two divs per row with some spacing */
-        margin-bottom: 2vh; /* Add spacing between rows */
-        box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
-
-    }
-
-    /* Adjust font sizes for smaller screens */
-    #div1 {
-        font-size: 4vw; /* Adjust font size for the title */
-        padding-top: 4vh; /* Adjust padding */
-        padding-left: 0;
-        text-align: center;
-    }
-
-    #div2 {
-        font-size: 2vw; /* Adjust font size for the subtitle */
-        padding-top: 1vh; /* Adjust padding */
-        padding-left: 5%;
-    }
-
-    /* Adjust font size in div3 */
-    #div3 > * {
-        
-        text-align: center;
-        font-size: 2.5vw; /* Adjust font size for the content in div3 */
+    
+    .testimonial-card {
+        padding: 2rem;
     }
 }
 
-/* Media Queries for Responsiveness */
 @media (max-width: 768px) {
-    /* Adjust font sizes for smaller screens */
-    .Father{
-        height: auto;
-    }
-    #div1 {
-        font-size: 7vw; /* Smaller font size */
-        padding-top: 4vh; /* Adjust padding */
-        
+    .reviews-section {
+        padding: 4rem 1.5rem;
     }
     
-    #div2 {
-        box-sizing: border-box;
-        margin-left: 5%;
-        margin-right: 5%;
-        color: rgb(116, 114, 114);
-        font-size: 4vw; /* Smaller font size */
-        padding-top: 2vh; /* Adjust padding */
-        padding-left: 0;
-        text-align: center;
-        
+    .reviews-section-title {
+        font-size: 1.25rem;
+        margin-bottom: 1rem;
     }
     
-    .div3_parent {
-        flex-direction: column; /* Change direction to column */
-        align-items: center; /* Center align items */
-        flex-wrap: wrap;
-        width: 100%;
-        margin: 0; /* Reset margin for better layout */
-        gap: 3vh; /* Adjust gap for spacing */
+    .reviews-main-title {
+        font-size: 2.25rem;
     }
-
-    #div3 {
-        width: 80%; /* Adjust width for smaller screens */
-        
+    
+    .reviews-subtitle {
+        font-size: 1rem;
     }
+    
+    .reviews-header {
+        margin-bottom: 3rem;
+    }
+    
+    .testimonial-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .testimonial-card {
+        padding: 2rem;
+    }
+    
+    .testimonial-card .card-summary {
+        font-size: 1.125rem;
+    }
+}
 
-    /* Adjust font size in div3 */
-    #div3 > * {
-        padding-top: 0%;
-        padding-bottom: 0%;
-        font-size: 4vw; /* Smaller font size */
-        text-align: center;
+@media (max-width: 480px) {
+    .reviews-section {
+        padding: 3rem 1rem;
+    }
+    
+    .reviews-section-title {
+        font-size: 1.125rem;
+    }
+    
+    .reviews-main-title {
+        font-size: 1.875rem;
+    }
+    
+    .reviews-subtitle {
+        font-size: 0.95rem;
+    }
+    
+    .reviews-header {
+        margin-bottom: 2.5rem;
+    }
+    
+    .testimonial-card {
+        padding: 1.5rem;
+    }
+    
+    .testimonial-card .card-summary {
+        font-size: 1.05rem;
+    }
+    
+    .testimonial-card .card-statement {
+        font-size: 0.9rem;
+    }
+    .testimonial-card .card-user-avatar {
+        width: 40px;
+        height: 40px;
+    }
+    .testimonial-card .card-user-name {
+        font-size: 0.9rem;
+    }
+    .testimonial-card .card-user-statement {
+        font-size: 0.8rem;
     }
 }

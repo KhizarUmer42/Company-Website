@@ -1,305 +1,326 @@
 /* pricing.css */
+:root {
+    --pricing-primary-color: #4f7bda; /* Accent Blue */
+    --pricing-primary-hover: #3e62ac; /* Darker Accent Blue for hover */
+    --pricing-text-primary: #1e1f1f; /* Dark Gray for text */
+    --pricing-text-secondary: #525f7f; /* Lighter Gray for text */
+    --pricing-background-light: #f8f9fa; /* Light gray page background */
+    --pricing-background-card: #ffffff; /* White for cards */
+    --pricing-border-color: #e9ecef;
+    --pricing-shadow-light: 0 4px 8px rgba(0, 0, 0, 0.05);
+    --pricing-shadow-medium: 0 8px 16px rgba(0, 0, 0, 0.1);
+    --pricing-font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
 
-.pricemain {
+.pricing-section {
+    font-family: var(--pricing-font-sans);
+    background-color: var(--pricing-background-light);
+    padding: 4rem 1rem;
     display: flex;
-    width: 100vw;
-    margin: 0;
-    height: auto; /* Allows the height to adjust based on content */
-    background: linear-gradient(to bottom, white 30%, #3868cf 100%);
-    padding: 20px 0; /* Add padding to top and bottom */
     justify-content: center;
-    overflow: hidden;
-    
+    overflow-x: hidden;
 }
 
-.flex {
+.pricing-container {
     display: flex;
     flex-direction: row;
-    width: 70%;
-    padding: 4% 0;
+    gap: 2.5rem; /* Gap between left and right columns */
+    width: 100%;
+    max-width: 1200px;
 }
 
-.myh5 {
-    font-size: 2.5rem;
-    letter-spacing: -1px;    
-}
-
-.projects {
-    padding: 0 30px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    flex-wrap: wrap; /* Allow wrapping of project items */
-}
-
-.detail, .price {
+/* Left Column: Details & Value Prop */
+.pricing-details {
+    flex: 1;
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
+}
+
+.pricing-subtitle {
+    color: var(--pricing-primary-color);
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 0.5rem;
+}
+
+.pricing-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--pricing-text-primary);
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+}
+
+.pricing-description {
+    font-size: 1.1rem;
+    color: var(--pricing-text-secondary);
+    line-height: 1.6;
+    margin-bottom: 2rem;
+}
+
+.pricing-stats {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 2.5rem;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.stat-item {
+    text-align: left;
+}
+
+.stat-item h3 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--pricing-primary-color);
+    margin: 0 0 0.25rem 0;
+}
+
+.stat-item p {
+    font-size: 0.9rem;
+    color: var(--pricing-text-secondary);
+    margin: 0;
+}
+
+/* Right Column: Offers Card */
+.pricing-offers-card {
     flex: 1;
-    padding: 30px;
-    min-width: 300px; /* Ensure a minimum width for better responsiveness */
+    background-color: var(--pricing-background-card);
+    border-radius: 16px;
+    padding: 2.5rem;
+    box-shadow: var(--pricing-shadow-medium);
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
 }
 
-.price {
-    border-radius: 20px;
-    border: solid 1px rgb(215, 215, 215);
-    background-color: #fff;
-    overflow-wrap: break-word !important;
-    box-sizing: border-box;
-    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
-    
-}
-
-.Contactus {
+.pricing-main-cta {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap; /* Allows elements to wrap when necessary */
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--pricing-border-color);
 }
 
-.inner {
-    display: flex;
-    flex-direction: column;
+.cta-price p {
+    font-size: 0.9rem;
+    color: var(--pricing-text-secondary);
+    margin: 0 0 0.25rem 0;
 }
 
-.proj {
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Centers content horizontally */
-    text-align: center;
-}
-
-.proj p {
-    color: #000;
+.cta-price h1 {
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: var(--pricing-primary-color);
     margin: 0;
+    line-height: 1;
 }
-.inner-p{
-    color: #4f7bda;
-    font-size: 16px;
+
+.pricing-offer-text {
+    font-size: 1rem;
+    color: var(--pricing-text-secondary);
+    line-height: 1.6;
+}
+
+.pricing-offer-guarantee {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--pricing-text-primary);
+    background-color: #e9f0fc; /* Light blue background for emphasis */
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    border-left: 3px solid var(--pricing-primary-color);
+}
+
+.service-offerings-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* Stack them by default, will change for wider screens if needed */
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.service-offering-item {
+    background-color: var(--pricing-background-light);
+    border: 1px solid var(--pricing-border-color);
+    border-radius: 12px;
+    padding: 1.5rem;
+    display: flex;
+    align-items: flex-start; /* Align icon and text nicely */
+    gap: 1rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-offering-item:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--pricing-shadow-light);
+}
+
+/* Styles for new SVG icons */
+.service-offering-icon {
+    display: flex; /* Helps in alignment if needed */
+    align-items: center;
+    justify-content: center;
+}
+
+.service-offering-svg-icon {
+    width: 36px; /* Adjust size as needed */
+    height: 36px;
+    color: var(--pricing-primary-color); /* Use accent color for icons */
+}
+
+.service-offering-content h4 {
+    font-size: 1.1rem;
     font-weight: 600;
+    color: var(--pricing-text-primary);
+    margin: 0 0 0.5rem 0;
 }
 
-.inner-h1{
+.service-offering-content p {
+    font-size: 0.9rem;
+    color: var(--pricing-text-secondary);
+    line-height: 1.5;
     margin: 0;
-    font-size: 40px;
 }
 
-.servicecontainer {
-    display: flex;
-    flex-direction: column;
-    padding: 5% 0;
-    justify-content: space-between;
-    border-top: solid 1px rgb(121, 135, 161);
-}
-
-.serv {
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-}
-
-.image {
-    max-width: 100%;
-    height: auto;
-    border-radius: 10px;
-}
-
-.image img {
-    height: 50px;
-}
-
-.contactbtn, .transparent-btn {
-    border-radius: 40px;
-    font-size: large;
+/* General Button Styles */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-family: var(--pricing-font-sans);
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px; /* Softer radius */
+    border: none;
     cursor: pointer;
-    transition: background-color 0.5s ease;
+    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+    text-decoration: none;
 }
 
-.contactbtn {
-    padding: 0px 50px;
-    height: 70px;
-    background-color: #4f7bda;
+.btn-primary {
+    background-color: var(--pricing-primary-color);
     color: white;
-    border: solid 1px #4f7bda;
 }
 
-.transparent-btn {
-    width: 40%;
-    padding: 20px;
-    background: transparent;
-    border: solid 1px #000;
+.btn-primary:hover {
+    background-color: var(--pricing-primary-hover);
+    box-shadow: 0 4px 12px rgba(79, 123, 218, 0.3);
 }
 
-.contactbtn:hover {
-    color: black;
-    background-color: white;
+.btn-secondary {
+    background-color: transparent;
+    color: var(--pricing-primary-color);
+    border: 2px solid var(--pricing-primary-color);
 }
 
-.transparent-btn:hover {
-    color: #fdfdff;
-    background-color: rgb(13, 1, 39);
+.btn-secondary:hover {
+    background-color: var(--pricing-primary-color);
+    color: white;
 }
 
-/* Media Queries for responsiveness */
+.btn-icon svg {
+    font-size: 1.1em;
+}
 
-/* Tablets (landscape mode) */
+/* Responsive Design */
 @media (max-width: 1024px) {
-    .pricemain{
-        margin-top: 5%;
-    }
-    .flex {
+    .pricing-container {
         flex-direction: column;
-        width: 90%;
-        padding: 2% 0;
-        overflow-wrap: break-word;
-        box-sizing: border-box;
+        gap: 2rem;
+        padding: 0 1rem; /* Add some horizontal padding */
     }
-    .projects {
-        padding: 0;
-        margin-top: 10px;
-        justify-content: space-around;
+    .pricing-title {
+        font-size: 2.2rem;
     }
-    .myh5{
+    .pricing-stats {
+        gap: 1.5rem;
+        justify-content: space-around; /* Better distribution on tablets */
+    }
+    .stat-item h3 {
         font-size: 2rem;
     }
-    .servicecontainer {
-        padding-top: 3%;
-        gap: 20px;
+    .pricing-offers-card {
+        padding: 2rem;
+    }
+    .cta-price h1 {
+        font-size: 2.5rem;
     }
 }
 
-/* Mobile (portrait mode) */
 @media (max-width: 768px) {
-
-    .pricemain{
-        margin-top: 20vh;
+    .pricing-section {
+        padding: 3rem 1rem;
     }
-
-    .servicecontainer{
-        font-size: 2%;
-    }
-
-
-    .flex {
-        width: 80%;
-        margin-right: 0; /* Reset margin */
-        
-        min-width: 0;
-
-        
-    }
-
-    .myh5 {
-        color: rgb(0, 0, 0);
-        font-size: 1.4rem;
+    .pricing-title {
+        font-size: 1.8rem;
         text-align: center;
     }
-
-    .projects {
+    .pricing-description {
+        font-size: 1rem;
+        text-align: center;
+    }
+    .pricing-details {
+        align-items: center; /* Center align content in left column on mobile */
+    }
+    .pricing-stats {
         flex-direction: column;
         align-items: center;
+        gap: 1.5rem;
     }
+    .stat-item {
+        text-align: center;
+    }
+    .pricing-main-cta {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        text-align: center;
+    }
+    .btn {
+        width: 100%;
+        max-width: 300px; /* Prevent buttons from becoming too wide */
+    }
+    .service-offering-item {
+        flex-direction: column; /* Stack icon and text vertically */
+        align-items: center;
+        text-align: center;
+    }
+    .service-offering-icon {
+        margin-bottom: 0.5rem;
+    }
+}
 
-    .proj h1 {
+@media (max-width: 480px) {
+    .pricing-section {
+        padding: 2rem 1rem;
+    }
+    .pricing-title {
+        font-size: 1.6rem;
+    }
+    .cta-price h1 {
+        font-size: 2rem;
+    }
+    .pricing-stats h3 {
         font-size: 1.8rem;
     }
-
-    .detail {
-        padding: 0;
-        margin-bottom: 5%;
+    .btn {
+        font-size: 0.9rem;
+        padding: 0.7rem 1.2rem;
     }
-
-    .price{
-        padding: 5%;
+    .service-offering-item {
+        padding: 1rem;
     }
-
-    .price{
-        height: auto;
-    }
-
-    .contactbtn, .transparent-btn {
-        align-self: center;
-        padding: 15px;
-    }
-
-    .servicecontainer {
-        padding: 0;
-        gap: 15px;
-    }
-
-    .serv {
-        flex-direction: column;
-        align-items: center;
-        width: 100%; /* Ensures it takes full width */
-    }
-
-    .image img {
-        height: 40px;
-    }
-}
-
-@media (max-width: 600px) {
-    .myh5 {
-        color: rgb(0, 0, 0);
-        font-size: 1.2rem;
-        text-align: center;
-        
-    }
-    .price{
-        padding: 4%;
-    }
-    .contactbtn{
-        padding: 5%;
+    .service-offering-content h4 {
         font-size: 1rem;
     }
-    .inner-p{
-        font-size: 14px ;
-    }
-    .inner-h1{
-        font-size: 30px;
-    }
-    .pricemain{
-        margin-top: 10vh;
-    }
-
-    
-}
-
-
-@media (max-width: 400px) {
-    .price {
-        padding: 3%; /* Adjusts padding to fit smaller screens */
-    }
-    .contactbtn {
-        padding: 3%;
-        font-size: 0.9rem;
-    }
-    .inner-p {
-        font-size: 12px;
-    }
-    .inner-h1 {
-        font-size: 25px;
-    }
-    .Right-text {
-        font-size: 12px !important;
-    }
-}
-@media (max-width: 380px) {
-    .price {
-        padding: 5%; /* Adjusts padding to fit smaller screens */
-    }
-    .contactbtn {
-        padding: 3%;
-        font-size: 0.9rem;
-    }
-    .inner-p {
-        font-size: 12px;
-    }
-    .inner-h1 {
-        font-size: 25px;
-    }
-    .Right-text {
-        font-size: 12px !important;
+    .service-offering-content p {
+        font-size: 0.85rem;
     }
 }
 

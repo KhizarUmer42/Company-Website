@@ -1,50 +1,85 @@
 import React from "react";
-import { FaGlobe } from "react-icons/fa";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import { useNavigate } from "react-router-dom";
 import "./Services.css";
 
-const Services = ({ title, description, Icon }) => {
+const Services = ({ title, description, Icon, backgroundImage, ctaText = "Learn More" }) => {
   const controls = useAnimation();
   const { ref, inView } = useInView({
-    threshold: 0.2, // Trigger at 20% visibility
-    triggerOnce: false, // Allow re-triggering on exit and re-entry
+    threshold: 0.2,
+    triggerOnce: false,
   });
+  const navigate = useNavigate();
 
   React.useEffect(() => {
     if (inView) {
-      // Animate in when the component is in view
       controls.start({
         opacity: 1,
-        scale: 1,
-        transition: { duration: 0.4, ease: "easeOut" },
+        y: 0,
+        transition: { 
+          duration: 0.5,
+          ease: [0.22, 1, 0.36, 1]
+        }
       });
     } else {
-      // Animate out when the component scrolls out of view
       controls.start({
         opacity: 0,
-        scale: 0.8,
-        transition: { duration: 0.3, ease: "easeIn" },
+        y: 20,
+        transition: { duration: 0.3 }
       });
     }
   }, [controls, inView]);
 
+  const handleCardClick = () => {
+    const serviceId = title.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
+    navigate(`/services/${serviceId}`);
+  };
+
   return (
-    <motion.div
-      id="ServiceS"
+    <motion.article
       ref={ref}
-      className="flexy_Row"
-      initial={{ opacity: 0, scale: 0.8 }}
+      className="service-card clickable"
+      initial={{ opacity: 0, y: 20 }}
       animate={controls}
+      whileHover={{ 
+        y: -10,
+        transition: { duration: 0.2 }
+      }}
+      onClick={handleCardClick}
+      onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && handleCardClick()}
+      tabIndex={0}
+      role="button"
+      aria-label={`Learn more about ${title}`}
+      style={{
+        backgroundImage: `url(${backgroundImage})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center'
+      }}
     >
-      <div className="flexycolumn1">
-        <Icon size={25} color="#4f7bda" className="globe" />
+      <div className="service-overlay" />
+      <div className="service-content">
+        <motion.div 
+          className="service-icon-container"
+          whileHover={{ 
+            scale: 1.1,
+            rotate: 5,
+            transition: { duration: 0.3 }
+          }}
+        >
+          <Icon className="service-icon" aria-hidden="true" />
+        </motion.div>
+        
+        <div className="service-text">
+          <motion.h3 
+            className="service-title"
+          >
+            {title}
+          </motion.h3>
+          <p className="service-description">{description}</p>
+        </div>
       </div>
-      <div className="flexycolumn2">
-        <p id="p1">{title}</p>
-        <p id="p2">{description}</p>
-      </div>
-    </motion.div>
+    </motion.article>
   );
 };
 

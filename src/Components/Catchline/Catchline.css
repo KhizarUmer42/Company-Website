@@ -61,3 +61,135 @@
         bottom: 10%;
     }
 }
+
+.catchline-container {
+  position: relative;
+  width: 100%;
+  padding: 3rem 2rem;
+  background: #0f172a;
+  overflow: hidden;
+}
+
+.catchline-content {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.catchline-text {
+  position: relative;
+  display: inline-block;
+  font-family: 'Inter', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 600;
+  line-height: 1.4;
+  color: #f8fafc;
+  z-index: 2;
+}
+
+.catchline-word {
+  display: inline-block;
+  position: relative;
+  color: #f8fafc;
+  transition: all 0.3s ease;
+  padding: 0 0.1em;
+}
+
+.catchline-word:hover {
+  color: #3b82f6;
+  transform: translateY(-2px);
+}
+
+/* Modern accent line */
+.catchline-accent {
+  position: relative;
+  height: 2px;
+  margin: 1.5rem auto;
+  max-width: 160px;
+  transform-origin: left;
+}
+
+.accent-line {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #3b82f6;
+  opacity: 0.8;
+}
+
+.accent-dot {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translate(50%, -50%);
+  width: 6px;
+  height: 6px;
+  background: #3b82f6;
+  border-radius: 1px;
+  transform: rotate(45deg);
+}
+
+/* Responsive styles */
+@media (max-width: 1024px) {
+  .catchline-text {
+    font-size: 2.2rem;
+  }
+  
+  .catchline-accent {
+    max-width: 140px;
+  }
+}
+
+@media (max-width: 768px) {
+  .catchline-container {
+    padding: 2.5rem 1.5rem;
+  }
+  
+  .catchline-text {
+    font-size: 1.8rem;
+  }
+  
+  .catchline-accent {
+    max-width: 120px;
+    margin: 1.2rem auto;
+  }
+  
+  .accent-dot {
+    width: 5px;
+    height: 5px;
+  }
+}
+
+@media (max-width: 480px) {
+  .catchline-container {
+    padding: 2rem 1rem;
+  }
+  
+  .catchline-text {
+    font-size: 1.5rem;
+  }
+  
+  .catchline-accent {
+    max-width: 100px;
+    margin: 1rem auto;
+  }
+  
+  .accent-dot {
+    width: 4px;
+    height: 4px;
+  }
+}
+
+/* Optional: Add a subtle hover effect to the container */
+.catchline-container:hover .catchline-accent {
+  opacity: 1;
+}
+
+.catchline-container:hover .accent-line {
+  background: #60a5fa;
+}
+
+.catchline-container:hover .accent-dot {
+  background: #60a5fa;
+}

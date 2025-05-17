@@ -1,61 +1,89 @@
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
 import './Review.css';
 import Card from "./Card";
 import testimonials from './test.js';
-import { motion } from 'framer-motion'; // Import motion from framer-motion
+import { motion } from 'framer-motion';
+
+const sectionVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      duration: 0.5,
+      staggerChildren: 0.2,
+    }
+  }
+};
+
+const headerVariants = {
+  hidden: { y: 20, opacity: 0 },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: { duration: 0.6, ease: "easeOut" }
+  }
+};
+
+const cardGridVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15,
+      delayChildren: 0.3,
+    }
+  }
+};
+
+const cardItemVariants = {
+  hidden: { y: 20, opacity: 0 },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: { duration: 0.5, ease: "circOut" }
+  }
+};
 
 const Review = () => {
-  const [isVisible, setIsVisible] = useState(false); // State to track visibility
-  const ref = useRef(null); // Ref to the component element
-
-  // Effect to observe the component's visibility
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        setIsVisible(entry.isIntersecting); // Set visibility based on intersection
-      },
-      { threshold: 0.1 } // Trigger when 10% of the component is in view
-    );
-
-    if (ref.current) {
-      observer.observe(ref.current); // Observe the component element
-    }
-
-    return () => {
-      if (ref.current) {
-        observer.unobserve(ref.current); // Cleanup the observer
-      }
-    };
-  }, []);
-
   return (
-    <div className="Father" id="RevieW" ref={ref}>
-      <motion.div
-        id="div1"
-        initial={{ y: 20, opacity: 0 }} // Start with a slight slide down and invisible
-        animate={isVisible ? { y: 0, opacity: 1, transition: { duration: 0.5 } } : { y: 20, opacity: 0 }} // Slide up and fade in on visibility
+    <motion.section
+      className="reviews-section"
+      id="RevieW"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.1 }}
+      variants={sectionVariants}
+    >
+      <motion.div 
+        className="reviews-header"
+        variants={headerVariants}
       >
-        We've helped our clients complete 3,000+ projects
+        <h2 className="reviews-section-title">Our Testimonials</h2>
+        <h3 className="reviews-main-title">
+          We've helped our clients complete 3,000+ projects
+        </h3>
+        <p className="reviews-subtitle">
+          Over the last 15 years, we've been driven by our passion for helping global clients achieve their goals.
+        </p>
       </motion.div>
+
       <motion.div
-        id="div2"
-        initial={{ y: 20, opacity: 0 }} // Start with a slight slide down and invisible
-        animate={isVisible ? { y: 0, opacity: 1, transition: { duration: 0.5 } } : { y: 20, opacity: 0 }} // Slide up and fade in on visibility
+        className="testimonial-grid"
+        variants={cardGridVariants}
       >
-        Over the last 15 years, we've been driven by our passion for helping global clients achieve their goals.
-      </motion.div>
-      <div className="div3_parent">
         {testimonials.map((item, index) => (
-          <Card
-            key={index}
-            index={index} // Pass the index to Card
-            statement={item.statement}
-            summary={item.summary}
-            user={item.user}
-          />
+          <motion.div variants={cardItemVariants} key={item.user + index}>
+            <Card
+              index={index}
+              statement={item.statement}
+              summary={item.summary}
+              user={item.user}
+              className="testimonial-card"
+            />
+          </motion.div>
         ))}
-      </div>
-    </div>
+      </motion.div>
+    </motion.section>
   );
 };
 
